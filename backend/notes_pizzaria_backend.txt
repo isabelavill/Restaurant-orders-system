@@ -1,0 +1,85 @@
+BACKEND
+criar pasta backend
+abre no cmd
+inicializa o node "npm init -y"
+abre no vscode "code ."
+no cmd "npm install typescript -D"
+no cmd "npm install express"
+no cmd "npm install @types/express -D"
+
+inicializar typescript
+no cmd "npx tsc --init"
+
+cria pasta src
+add files
+routes.ts
+server.ts
+
+no cmd "npm install ts-node-dev -D"
+e cria o scipts em 'package.json'
+no cmd roda o script "npm run dev #"
+
+cria nova collection no insomnia e as pastas c os requests e faz os testes localhost:3333/teste por ex (com o programa ja inicializado(npm run dev #)
+
+p excessoes instalar
+'npm install express-async-errors'
+
+instala cors p q qualquer servidor rode as excessoes, não so um especifico
+'npm install cors'
+'npm i --save-dev @types/cors'
+
+baixa postgresql no pc p usar banco de dados
+senha do postgresql: aquino6310
+instalado como 'pgadmin4'
+obcject, create database
+
+baixa postbird no pc
+user:postegree
+senha:aquino6310
+database: tasklist
+
+'npm install prisma'
+'npm install @prisma/client'
+'npx prisma init'
+
+altera o user,a senha e o nome do bd no arq .env
+
+cria folder prisma em src
+
+rm schema, prisma_schema criar nosso proprio schema(modelangem de como funfa o sist)
+
+no src cria pasta controllers e services
+
+instalar biblioteca p criptografar senha do usuario
+'npm install node-gyp -g'
+'npm install bcrypt -g'
+'npm install bcrypt --save'
+'npm i --save-dev @types/bcryptjs'
+'npm install @types/bcrypt -D'
+
+
+JWT serve p autenticação/segurança
+vc entra com um login na api e o JWT retorna um token
+installar jwt
+'npm install jsonwebtoken'
+'npm i --save-dev @types/jsonwebtoken'
+
+gera uma chave md5 hash p botar no sign
+pode ser pelo site md5hashgenerator.com
+e coloca la no .env
+em tsconfig troca p false o strict
+
+instala dotenv p poder usar a variavel q vc criou no env
+'npm install dotenv'
+
+em src cria pasta p middlewers
+
+pasta @types p criarmos nosso proprio tipo, quando quiser usar o req n sendo uma request por ex
+no tsconfig descomenta typeroots e add o local q estao os types ('./src/@types')
+
+pasta tmp p guardar imgs dos produtos
+instala biblioteca p lidar com imgs
+'npm install multer'
+'npm install @types/multer'
+
+em src cria pasta config p indicar p onde ele tem q mandr as imgs

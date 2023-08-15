@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+//criando tabela de usuario
+model User{
+  id String @id @default(uuid())
+  name String
+  email String
+  password String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("users")
+}
+//npx prisma migrate dev (para mandar p bd)
+// Enter a name for the new migration: » create-table-users
+
+model Category{
+  id String @id @default(uuid())
+  name String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("categories")
+  products Product[] //uma categoria pode ter varios produtos
+}
+
+model Product{
+  id String @id @default(uuid()) //uuid p gerar automatico
+  name String
+  price String
+  description String
+  banner String
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  category Category @relation(fields: [category_id], references: [id])
+  items Item[]
+  @@map("products")
+
+  category_id String //passa o id da categroia q vc quer cadastrar, ex Coca é uma bebida
+}
+
+model Order{
+  id String @id @default(uuid())
+  table Int
+  status Boolean @default(false) //sempre comeca como falso
+  draft Boolean @default(true)
+  name String? //opcional
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("orders")
+
+  items Item[] //em uma order posso ter varios itens
+}
+
+model Item{
+  id String @id @default(uuid())
+  amount Int
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  order Order @relation(fields:[order_id], references: [id])
+  product Product @relation(fields:[product_id], references: [id])
+  @@map("items")
+  order_id String //id de um pedido p o item se relacionar
+  product_id String 
+}
